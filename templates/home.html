@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% block content %}
+    <h1>Hello {{name}}!!!!</h1>
+
+    <ul>
+        <li><a href="accounts/home">Home</a></li>
+        {% if user.is_authenticated %}
+        <li><h5>Hello, {{user.first_name}}</h5></li>
+        <li><a href="accounts/logout">Logout</a></li>
+        {% else %}
+        <li><a href="accounts/register">Register</a></li>
+        <li><a href="accounts/login">Login</a></li>
+        {% endif %}
+    </ul>
+    
+    <form action="add">        
+        Enter 1st number : <input type="text" name="num1">
+        <br>
+        Enter 2nd number : <input type="text" name="num2">
+        <br>
+        <input type="submit">
+        
+    </form>
+
+    {% endblock %}
+</body>
+</html>
